@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<script>
+    function update() {
+        document.getElementById('hotblackgay84').value = cookiecount;
+        document.title = cookiecount + " Monkeys";
+        document.getElementById('ammountAutoClick').innerHTML = "You Own " + autoClick + " Auto Clickers"
+        document.getElementById('costAutoClick').innerHTML = ((autoClick+1) * 12) + " Monkeys"
+    }
+
+    var cookiecount = 0;
+    var autoClick = 0;
+    var farms = 0;
+
+    function timer() {
+        cookiecount = cookiecount + autoClick;
+        update()
+    }
+    setInterval(timer, 1000)
+</script>
+<html>
+<head><title>Monkeys</title></head>
+<body>
+
+    <a href=# onclick="add()"><img src="images/monkeyaa.png" width="150px" height="150px"></a>
+    <br><br>
+    Current:
+    <input type="text" id="hotblackgay84" disabled style= text-align:center>
+    <script>
+    function add() {
+        cookiecount = cookiecount + 1
+        update()
+    }
+    </script>
+    Monkeys
+    <br><br>
+
+    <button><a href="#" onClick="save()">Save</a></button>
+    <button><a href="#" onClick="load()">Load</a></button>
+    <br><br>
+    
+    <p>Buy one Worker</p>
+    <button><a href="#" onClick="buyAutoClick()"><img src="images/autoclicker.png" width="50px" height="50px"></a></button>
+    <p id="costAutoClick">12 Monkeys</p>
+    <p id="ammountAutoClick">You Own Workers</p>
+    
+    <script>
+    function save() {
+        localStorage.setItem("cookiecount", cookiecount);
+        localStorage.setItem("autoClick", autoClick);
+    }
+    function load() {
+        cookiecount = localStorage.getItem("cookiecount");
+        cookiecount = parseInt(cookiecount);
+        autoClick = localStorage.getItem("autoClick");
+        update()
+    }
+    function buyAutoClick() {
+        if (cookiecount >= ((autoClick+1) * 12)) {
+            cookiecount = cookiecount - ((autoClick+1) * 12);
+            autoClick = autoClick + 1;
+            update()
+        }
+    }
+    </script>
+</body>
+</html>
